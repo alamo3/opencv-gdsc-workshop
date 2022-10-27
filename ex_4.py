@@ -3,8 +3,8 @@ import numpy as np
 
 img = cv2.imread('window.jpeg')
 
-cv2.namedWindow('Original Image')
-cv2.namedWindow('Edge detection')
+cv2.namedWindow('Original Image', cv2.WINDOW_NORMAL)
+cv2.namedWindow('Edge detection', cv2.WINDOW_NORMAL)
 
 canny_lower = 0
 canny_upper = 0
@@ -23,7 +23,6 @@ def changeCannyUpper(*args):
 cv2.createTrackbar('Lower threshold', 'Edge detection', 0, 255, changeCannyLower)
 cv2.createTrackbar('Upper threshold', 'Edge detection', 0, 255, changeCannyUpper)
 
-
 def edge_detection():
     edge = cv2.Canny(img, canny_lower, canny_upper)
 
@@ -31,8 +30,6 @@ def edge_detection():
     cv2.imshow('Edge detection', edge)
 
 
-if __name__ == "__main__":
-
-    while True:
-        edge_detection()
-        cv2.waitKey(10)
+while True:
+    edge_detection()
+    cv2.waitKey(10)
